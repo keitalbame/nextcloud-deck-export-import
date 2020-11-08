@@ -12,7 +12,8 @@ def getBoards():
     response = requests.get(
             f'{urlFrom}/index.php/apps/deck/api/v1.0/boards',
             auth=authFrom,
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -20,7 +21,8 @@ def getBoardDetails(boardId):
     response = requests.get(
             f'{urlFrom}/index.php/apps/deck/api/v1.0/boards/{boardId}',
             auth=authFrom,
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -28,7 +30,8 @@ def getStacks(boardId):
     response = requests.get(
             f'{urlFrom}/index.php/apps/deck/api/v1.0/boards/{boardId}/stacks',
             auth=authFrom,
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -36,7 +39,8 @@ def getStacksArchived(boardId):
     response = requests.get(
             f'{urlFrom}/index.php/apps/deck/api/v1.0/boards/{boardId}/stacks/archived',
             auth=authFrom,
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -48,7 +52,8 @@ def createBoard(title, color):
                 'title': title,
                 'color': color
             },
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     board = response.json()
     boardId = board['id']
@@ -58,7 +63,8 @@ def createBoard(title, color):
         response = requests.delete(
             f'{urlTo}/index.php/apps/deck/api/v1.0/boards/{boardId}/labels/{labelId}',
             auth=authTo,
-            headers=headers)
+            headers=headers,
+            verify=False)
         response.raise_for_status()
     return board
 
@@ -70,7 +76,8 @@ def createLabel(title, color, boardId):
                 'title': title,
                 'color': color
             },
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -82,7 +89,8 @@ def createStack(title, order, boardId):
                 'title': title,
                 'order': order
             },
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -97,7 +105,8 @@ def createCard(title, ctype, order, description, duedate, boardId, stackId):
                 'description': description,
                 'duedate': duedate
             },
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
     return response.json()
 
@@ -108,7 +117,8 @@ def assignLabel(labelId, cardId, boardId, stackId):
             json={
                 'labelId': labelId
             },
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
 
 def archiveCard(card, boardId, stackId):
@@ -118,7 +128,8 @@ def archiveCard(card, boardId, stackId):
             f'{urlTo}/index.php/apps/deck/api/v1.0/boards/{boardId}/stacks/{stackId}/cards/{cardId}',
             auth=authTo,
             json=card,
-            headers=headers)
+            headers=headers,
+            verify=False)
     response.raise_for_status()
 
 def copyCard(card, boardIdTo, stackIdTo, labelsMap):
