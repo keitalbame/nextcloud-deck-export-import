@@ -25,7 +25,12 @@ Reenable it after import is finished.
    ```
    cd nextcloud-deck-export-import
    ```
-3. Run python script
+3. Adapt variables for your instances:
+   * urlFrom
+   * authFrom
+   * urlTo
+   * authTo
+4. Run python script
    ```
    python nextcloud-deck-export-import.py
    ```
