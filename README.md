@@ -1,4 +1,4 @@
-# nextcloud-deck-import
+# nextcloud-deck-export-import
 
 This code was imported from [@svbergerem](https://gist.github.com/svbergerem) [gist](https://gist.github.com/svbergerem/5914d7f87764901aefddba125af99938).
 
